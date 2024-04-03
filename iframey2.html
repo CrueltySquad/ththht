@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About:Blank Page with Dynamic iFrame</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      animation: moveTitle 5s linear infinite;
+    }
+
+    @keyframes moveTitle {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    iframe {
+      border: none;
+      margin: 30px auto;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Add your page content here -->
+  <h1>Welcome to my webpage!</h1>
+  <p>Enter the URL of the webpage you want to load in the iFrame:</p>
+  <form id="iframeForm">
+    <input type="text" id="iframeUrl" name="iframeUrl" value="https://www.google.com">
+    <button type="submit">Load iFrame</button>
+  </form>
+  <iframe id="iframeContent" width="1350" height="600"></iframe>
+
+  <script>
+    // Get the form and iFrame elements
+    var iframeForm = document.getElementById("iframeForm");
+    var iframeUrlInput = document.getElementById("iframeUrl");
+    var iframeContent = document.getElementById("iframeContent");
+
+    // Set the initial iFrame source to the default URL
+    iframeContent.src = iframeUrlInput.value;
+
+    // Add a submit event listener to the form
+    iframeForm.addEventListener("submit", function(event) {
+      // Prevent the form from submitting normally
+      event.preventDefault();
+
+      // Update the iFrame source to the new URL
+      iframeContent.src = iframeUrlInput.value;
+    });
+  </script>
+</body>
+</html>
